@@ -1,0 +1,15 @@
+[package]
+name = "twicbook-builder"
+version = "2.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+anyhow = "1.0.104"
+clap = { version = "=4.3.24", features = ["derive"] }
+dashmap = "6.2.1"
+pgn-reader = "=0.26.0"
+shakmaty = "=0.27.3"
+walkdir = "2.5.0"
+zstd = "0.13.3"
