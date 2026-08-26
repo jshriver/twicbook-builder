@@ -39,9 +39,11 @@ fn run(args: Args) -> Result<()> {
     }
     eprintln!("found {} input file(s)", files.len());
 
-    let jobs = args
-        .jobs
-        .unwrap_or_else(|| thread::available_parallelism().map(|n| n.get()).unwrap_or(4));
+    let jobs = args.jobs.unwrap_or_else(|| {
+        thread::available_parallelism()
+            .map(|n| n.get())
+            .unwrap_or(4)
+    });
 
     let cfg = Arc::new(Config {
         roster: Arc::new(roster),

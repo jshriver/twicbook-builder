@@ -69,7 +69,8 @@ impl Visitor for GameVisitor {
 
     fn header(&mut self, key: &[u8], value: RawHeader<'_>) {
         if self.cfg.roster.wants(key) {
-            self.headers.insert(key.to_vec(), value.decode().into_owned());
+            self.headers
+                .insert(key.to_vec(), value.decode().into_owned());
         }
     }
 
@@ -87,8 +88,14 @@ impl Visitor for GameVisitor {
             return Skip(true);
         }
 
-        let white_elo = self.headers.get(b"WhiteElo".as_slice()).and_then(|v| parse_elo(v));
-        let black_elo = self.headers.get(b"BlackElo".as_slice()).and_then(|v| parse_elo(v));
+        let white_elo = self
+            .headers
+            .get(b"WhiteElo".as_slice())
+            .and_then(|v| parse_elo(v));
+        let black_elo = self
+            .headers
+            .get(b"BlackElo".as_slice())
+            .and_then(|v| parse_elo(v));
 
         match (white_elo, black_elo) {
             (Some(w), Some(b)) => {

@@ -8,7 +8,9 @@ use crate::cli::DEFAULT_ROSTER;
 /// Header tags that must be inspected for *filtering* purposes even if they
 /// are not part of the output roster (e.g. Variant/SetUp/FEN are never
 /// written out, but we must see them to reject non-standard games).
-const FILTER_ONLY_TAGS: &[&str] = &["Variant", "SetUp", "FEN", "WhiteElo", "BlackElo", "PlyCount"];
+const FILTER_ONLY_TAGS: &[&str] = &[
+    "Variant", "SetUp", "FEN", "WhiteElo", "BlackElo", "PlyCount",
+];
 
 #[derive(Debug, Clone)]
 pub struct Roster {
